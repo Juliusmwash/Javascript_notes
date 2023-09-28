@@ -11,6 +11,7 @@ This README provides an explanation and a demonstration of how getters work in J
 
 To use getters, define an object with a getter method. Here's an example:
 
+OBJECT
 ```javascript
 const person = {
   firstName: "John",
@@ -22,15 +23,31 @@ const person = {
 };
 ```
 
+CLASS
+```javascript
+class Person {
+  constructor(firstName, lastName) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+  }
+
+  get fullName() {
+    return `${this.firstName} ${this.lastName}`;
+  }
+}
+
+// Create an instance of the Person class
+const person = new Person("John", "Doe");
+
+```
 ## Usage
 
-Accessing the `fullName` property:
+Accessing the `fullName` property from both object and class:
 
 ```javascript
 console.log(person.fullName); // Output: "John Doe"
 ```
-
-In this example, `fullName` is a getter method within the `person` object. When you access `person.fullName`, it doesn't look up a pre-defined value but instead executes the getter method, which dynamically calculates and returns the full name by combining the `firstName` and `lastName` properties.
+In this example, `fullName` is a getter method within the `person` object and `Person` class instance(person). When you access `person.fullName`, it doesn't look up a pre-defined value but instead executes the getter method, which dynamically calculates and returns the full name by combining the `firstName` and `lastName` properties.
 
 ## Key Points
 
@@ -51,7 +68,7 @@ Here are a few key points to remember about getters:
 
 It's important to note that getters are meant for reading and computing values, not for setting them. Let demonstrates this concept with an example.
 
-### Example
+### Example using object
 
 Consider the following example:
 
