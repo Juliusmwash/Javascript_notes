@@ -1,4 +1,3 @@
-```markup
 # JavaScript Generators
 
 In JavaScript, generator methods are functions that use the `function*` syntax to create iterators. Generators allow you to pause and resume the execution of a function, which can be very useful for handling asynchronous code, creating iterable objects, and simplifying complex control flows.
@@ -79,5 +78,4 @@ console.log(it.next().value); // 1
 ```
 
 This code creates an iterator `it` from the `g` method of `obj2` and then uses `next()` to retrieve the values produced by the generator. In this case, it yields `0` and `1` because `index` is incremented with each call to `next()`, and the generator runs indefinitely.
-```
 
