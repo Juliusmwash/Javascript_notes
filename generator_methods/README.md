@@ -79,3 +79,53 @@ console.log(it.next().value); // 1
 
 This code creates an iterator `it` from the `g` method of `obj2` and then uses `next()` to retrieve the values produced by the generator. In this case, it yields `0` and `1` because `index` is incremented with each call to `next()`, and the generator runs indefinitely.
 
+
+## Asynchronous Generators in JavaScript
+
+In the code provided, we'll explore how to create an asynchronous generator method within an object using both the traditional function expression syntax and the shorthand syntax introduced in ES6. We'll demonstrate how to use and work with these asynchronous generators.
+
+### Using a Named Property (Traditional Syntax):
+
+```javascript
+const obj = {
+  f: async function* () {
+    yield 1;
+    yield 2;
+    yield 3;
+  },
+};
+
+const it1 = obj.f();
+
+(async () => {
+  console.log(await it1.next()); // { value: 1, done: false }
+  console.log(await it1.next()); // { value: 2, done: false }
+  console.log(await it1.next()); // { value: 3, done: false }
+  console.log(await it1.next()); // { value: undefined, done: true }
+})();
+```
+
+### Using Shorthand Syntax (ES6):
+
+```javascript
+const obj2 = {
+  async *f() {
+    yield 1;
+    yield 2;
+    yield 3;
+  },
+};
+
+const it2 = obj2.f();
+
+(async () => {
+  console.log(await it2.next()); // { value: 1, done: false }
+  console.log(await it2.next()); // { value: 2, done: false }
+  console.log(await it2.next()); // { value: 3, done: false }
+  console.log(await it2.next()); // { value: undefined, done: true }
+})();
+```
+
+In both cases, an object is defined with an asynchronous generator method `f` that yields values. An iterator `it1` or `it2` is created by calling the `f` method on the object.
+
+To consume values from the asynchronous generator, the `await` keyword is used with the `next()` method. This allows the asynchronous generator's execution to pause until a value is ready to be yielded, making it useful for handling asynchronous tasks, such as fetching data from a server or working with asynchronous streams of data.
